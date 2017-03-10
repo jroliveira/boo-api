@@ -8,13 +8,13 @@ trait CreateToggleComponent extends Component {
   val createToggle: CreateToggle
 
   class CreateToggle {
-    def apply(user: String, model: Toggle): Future[Option[Toggle]] = Future {
+    def apply(user: String, toggle: Toggle): Future[Option[Toggle]] = Future {
       TogglesDataSource
         .toggles
         .get(user)
         .map(toggles => {
-          TogglesDataSource.toggles.put(user, model :: toggles)
-          model
+          TogglesDataSource.toggles.put(user, toggle :: toggles)
+          toggle
         })
     }
   }
