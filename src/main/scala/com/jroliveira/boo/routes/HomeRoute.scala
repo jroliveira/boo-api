@@ -2,7 +2,7 @@ package com.jroliveira.boo.routes
 
 import akka.http.scaladsl.server.Route
 
-object HomeRoute extends RouteBase {
+object HomeRoute extends BaseRoute {
   val routes: Route =
     path("") {
       get {

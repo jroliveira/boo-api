@@ -7,7 +7,7 @@ import com.jroliveira.boo.infra.ComponentRegistry
 import com.jroliveira.boo.models.User
 import spray.json.RootJsonFormat
 
-object UsersRoute extends RouteBase {
+object UsersRoute extends BaseRoute {
   implicit val format: RootJsonFormat[User] = jsonFormat1(User)
 
   val routes: Route =

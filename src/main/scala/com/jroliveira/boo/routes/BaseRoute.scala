@@ -7,7 +7,7 @@ import spray.json.DefaultJsonProtocol
 import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.Implicits
 
-trait RouteBase extends Directives
+trait BaseRoute extends Directives
   with SprayJsonSupport
   with DefaultJsonProtocol {
   implicit val ec: ExecutionContext = Implicits.global

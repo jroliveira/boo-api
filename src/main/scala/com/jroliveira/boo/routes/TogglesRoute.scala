@@ -8,7 +8,7 @@ import com.jroliveira.boo.infra.ComponentRegistry
 import com.jroliveira.boo.models.Toggle
 import spray.json.RootJsonFormat
 
-object TogglesRoute extends RouteBase {
+object TogglesRoute extends BaseRoute {
   implicit val format: RootJsonFormat[Toggle] = jsonFormat3(Toggle)
 
   val routes: Route =
