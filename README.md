@@ -1,7 +1,5 @@
 # boo (api)
 
-[![Supported languages](https://img.shields.io/badge/supported languages-obj--c%20%7C%20swift-green.svg)](https://github.com/jroliveira/boo-api)
-
 Boo (api) is an open source project written in Scala (Akka HTTP) that implements technique Feature Toggle.
 
 ### Installing
