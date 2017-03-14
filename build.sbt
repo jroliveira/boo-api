@@ -19,4 +19,3 @@ libraryDependencies ++= {
     "org.mockito" % "mockito-core" % "1.8.5"
   )
 }
-
