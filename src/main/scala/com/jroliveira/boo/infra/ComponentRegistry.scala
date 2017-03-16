@@ -1,15 +1,15 @@
 package com.jroliveira.boo.infra
 
 import com.jroliveira.boo.components._
-import com.jroliveira.boo.infra.data.DataSourceInMemoryComponent
+import com.jroliveira.boo.infra.data.MongoDbComponentImpl
 
-object ComponentRegistry extends DataSourceInMemoryComponent
+object ComponentRegistry extends MongoDbComponentImpl
   with CreateToggleComponent
   with GetTogglesComponent
   with CreateUserComponent
   with GetUsersComponent
   with GetUserComponent {
-  val dataSource = new DataSourceInMemory
+  val mongoDb = new Casbah
 
   val createToggle = new CreateToggle
   val getToggles = new GetToggles
