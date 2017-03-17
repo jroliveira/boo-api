@@ -5,3 +5,14 @@ scala:
 
 jdk:
   - oraclejdk8
+
+env:
+  - CODACY_PROJECT_TOKEN=42404e8a23ee41ea85ff75c434caac59
+
+script:
+  - sbt clean coverage test
+
+after_success:
+  - sbt coverageReport
+  - sbt coverageAggregate
+  - sbt codacyCoverage
