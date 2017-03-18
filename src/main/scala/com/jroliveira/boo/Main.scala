@@ -10,7 +10,7 @@ import scala.concurrent.ExecutionContextExecutor
 
 object Main extends Config {
   def main(args: Array[String]): Unit = {
-    implicit val system: ActorSystem = ActorSystem("hangman")
+    implicit val system: ActorSystem = ActorSystem("boo")
     implicit val materialize: Materializer = ActorMaterializer()
     implicit def executor: ExecutionContextExecutor = system.dispatcher
 

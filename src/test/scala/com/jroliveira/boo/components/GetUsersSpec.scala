@@ -1,14 +1,20 @@
 package com.jroliveira.boo.components
 
-import com.jroliveira.boo.models.{Toggle, User}
+import com.jroliveira.boo.models.User
 import com.jroliveira.boo.{BaseSpec, TestEnvironment}
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
-class GetUsersSpec extends BaseSpec with TestEnvironment {
+class GetUsersSpec extends BaseSpec {
+  val testEnvironment = new TestEnvironment
+
   "GetUsers" should {
-    dataSource.toggles += ("jroliveira" -> List[Toggle]())
+    testEnvironment
+      .mongoCursor
+      .map(_ => User("jroliveira"))
+      .returns(Iterator(User("jroliveira")))
+    val users = get
 
     "return length equal to 1" in {
       users.length must beEqualTo(1)
@@ -18,7 +24,5 @@ class GetUsersSpec extends BaseSpec with TestEnvironment {
     }
   }
 
-  def users: Seq[User] = {
-    Await.result(getUsers(), Duration.Inf)
-  }
+  def get: Seq[User] = Await.result(testEnvironment.getUsers(), Duration.Inf)
 }

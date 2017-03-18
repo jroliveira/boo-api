@@ -1,27 +1,27 @@
 package com.jroliveira.boo.components
 
 import com.jroliveira.boo.{BaseSpec, TestEnvironment}
-import com.jroliveira.boo.models.Toggle
+import com.jroliveira.boo.models.{Toggle, User}
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
-class CreateToggleSpec extends BaseSpec with TestEnvironment {
+class CreateToggleSpec extends BaseSpec {
+  val testEnvironment = new TestEnvironment
+
   "CreateToggle" should {
-    dataSource.toggles += ("jroliveira" -> List[Toggle]())
+    val toggle = create
 
     "return name equal to 'jroliveira'" in {
-      toggle.get.name must beEqualTo("isTest")
+      toggle.name must beEqualTo("isTest")
     }
     "return value equal to true" in {
-      toggle.get.value must beTrue
+      toggle.value must beTrue
     }
     "return tags equal to ['boo']" in {
-      toggle.get.tags must beEqualTo(Seq("boo"))
+      toggle.tags must beEqualTo(Seq("boo"))
     }
   }
 
-  def toggle: Option[Toggle] = {
-    Await.result(createToggle("jroliveira", Toggle("isTest", value = true, Seq("boo"))), Duration.Inf)
-  }
+  def create: Toggle = Await.result(testEnvironment.createToggle(User("jroliveira"), Toggle("isTest", value = true, Seq("boo"))), Duration.Inf)
 }
